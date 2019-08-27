@@ -10,6 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-route::get('/produto/lista', 'IndexController@index');
+route::get('/home', 'IndexController@index');
 route::get('/contato', 'ContatoController@index');
 route::get('/contato/rh', 'ContatoController@rh');
