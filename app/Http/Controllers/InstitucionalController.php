@@ -12,7 +12,7 @@ class InstitucionalController extends Controller{
         $caminho = '../storage/app';
        $log = new LogConsulta($caminho);
        $ip = $_SERVER['REMOTE_ADDR'];
-       $pagina = "home";
+       $pagina = "institucional";
        $data = $log->registrar($ip, $pagina);
         return view('site.Institucional', compact('titulo','rodape'));
     }

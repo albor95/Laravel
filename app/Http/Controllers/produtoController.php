@@ -11,7 +11,7 @@ class produtoController extends Controller{
         $caminho = '../storage/app';
        $log = new LogConsulta($caminho);
        $ip = $_SERVER['REMOTE_ADDR'];
-       $pagina = "home";
+       $pagina = "produto";
        $data = $log->registrar($ip, $pagina);
         return view('site.produto', compact('titulo','rodape'));
     }
