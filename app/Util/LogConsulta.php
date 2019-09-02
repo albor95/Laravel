@@ -10,7 +10,7 @@ class LogConsulta {
         $this->caminho = $caminho;
     }
 
-    public function registrar($ip, $pagina) {
+    public function registrar($pagina,$ip ) {
 
         $data = date('d/m/Y H:i');
      
@@ -21,21 +21,33 @@ class LogConsulta {
             $this->gravarArquivo($dadosAtuais, $ip, $pagina);
             
         } else {
-            $this->gravarArquivo($data, $ip, $pagina);
+            $this->gravarArquivo($pagina,$ip ,$data );
         }
 
         return $data;
     }
     
-    private function gravarArquivo($data, $ip, $pagina){
-        file_put_contents($this->caminho.'/log_geral.txt', $data. " - ". $ip ." - ". $pagina);
+    private function gravarArquivo($pagina, $ip, $data ){
+        file_put_contents($this->caminho.'/log_geral.txt',$pagina. " - ". $ip ." - ".$data.";" );
         
     }
     
     public function capturar(){
         
+       
         $dados = file_get_contents($this->caminho.'/log_geral.txt');
-        return $dados;
+       return $dados;
+       
     }
-
+    
+public function capturarUlt(){
+        
+       
+        $dados = file_get_contents($this->caminho.'/log_geral.txt');
+        $texto = explode(';', $dados);
+        $texto = array_reverse($texto);
+   
+        return $texto[1];
+       
+    }
 }

@@ -12,7 +12,7 @@ class produtoController extends Controller{
        $log = new LogConsulta($caminho);
        $ip = $_SERVER['REMOTE_ADDR'];
        $pagina = "produto";
-       $data = $log->registrar($ip, $pagina);
+       $data = $log->registrar($pagina,$ip );
         return view('site.produto', compact('titulo','rodape'));
     }
 }
