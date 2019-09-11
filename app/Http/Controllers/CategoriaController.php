@@ -20,6 +20,24 @@ class CategoriaController extends Controller {
         $categoria=new \App\Categoria();
         $categoria->nomcat=$request->get('nomcat');
         $categoria->save();
-        redirect('/categoria');
+        return redirect('/categoria')->with('msg','Categoria cadastrada mulekote!');
+    }
+    public function destroy($codcat){
+        $categoria = \App\categoria::find($codcat);
+        $categoria->delete();
+        return redirect('/categoria')->with('catEliminada','*thanos snap*');
+    }
+    
+    public function edit($codcat){
+        $categoria=\App\Categoria::find($codcat);
+        return view('categoria.edit',compact('categoria'));
+        
+    }
+    
+     public function update(Request $request, $codcat) {
+        $categoria=\App\Categoria::find($codcat);
+        $categoria->nomcat=$request->get('nomcat');
+        $categoria->save();
+        return redirect('/categoria')->with('atualizada','Update deu certo mulekote!');
     }
 }

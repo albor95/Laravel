@@ -1,59 +1,56 @@
 <?php
-
 namespace App\Console\Commands;
-
 use Illuminate\Console\Command;
 use App;
-
-class PopularTabela extends Command
-{
+class PopularTabela extends Command {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
     protected $signature = 'app:popular';
-
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Preenche as tabelas';
-
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    
-    
-    
-    public function handle()
-    {
-        $categoriaBase = new \App\Categoria();
-        $dados = array();
+    public function handle() {
+        $arrayCategorias [] = "Categoria 1";
+        $arrayCategorias [] = "Categoria 2";
+        $arrayCategorias [] = "Categoria 3";
         
-        $dados = $categoriaBase->pegaCsv("..\pweb\public\dados.csv");
-        $i = 0;;
-                
-        Foreach($dados as $dado){
-            $categoria = new \App\Categoria();
-            $categoria->catnom = $dados[$i];
+        foreach ($arrayCategorias as $cat) {
+            $categoria = new App\Categoria();
+            $categoria->nomcat = $cat;
             $categoria->save();
-            $i++;
         }
+        
+        //Defini no modelo
+        //protected $primaryKey = 'codcat';
+        
+       // App\Categoria::where('codcat', 1)->delete();
+       /// App\Categoria::where('codcat', 5)->delete();
+        
+      ///  $categoriaSelecionada = App\Categoria::find(10);
+       /// $categoriaSelecionada->nomcat = "oioioioioi";
+        //$categoriaSelecionada->save();
+   
+      //  $listaCategorias = App\Categoria::all();
+        
+       // foreach ($listaCategorias as $l) {
+        //    $this->info($l->nomcat);
+           
+       // }
+        
+        
     }
-    
-    
 }
