@@ -20,7 +20,7 @@
     </head>
     <body>
 
-        <a href="{{route('cliente.createCli')}}">Adicionar Cliente</a>
+        <a href="{{route('cliente.create')}}">Adicionar Cliente</a>
 
         <table style="width: 50%;">
             <thead>
@@ -45,7 +45,7 @@
                     <td>{{$c->telcli}}</td>
                 
 
-            <button onclick="location.href ='{{route('cliente.editCli', $c->codcli)}}'" type="button">Editar</button>
+            <button onclick="location.href ='{{route('cliente.edit', $c->codcli)}}'" type="button">Editar</button>
 
             <form action="{{route('cliente.destroy', $c->codcli)}}" method="post">
                 @csrf

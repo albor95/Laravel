@@ -22,7 +22,7 @@ class ClienteController extends Controller
    
     public function store(Request $request)
     {
-         $cliente=new \App\Categoria();
+        $cliente=new \App\Cliente();
         $cliente->nomcli=$request->get('nomcli');
         $cliente->save();
         return redirect('/cliente')->with('msg','cliente cadastrado mulekote!');
