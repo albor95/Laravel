@@ -25,7 +25,7 @@ class CategoriaController extends Controller {
     public function destroy($codcat){
         $categoria = \App\categoria::find($codcat);
         $categoria->delete();
-        return redirect('/categoria')->with('catEliminada','*thanos snap*');
+        return "true";
     }
     
     public function edit($codcat){
