@@ -13,14 +13,17 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-        
+  
+  <script src="{{url('/')}}/js/categoria.js" type="text/javascript"></script>
     </head>
     <body>
         
         <script>
         function eliminarCategoria(idForm,destino){
+            confirma=confirm("keh memu faze sapoha ai?");
+            
          dadosForm=$('#'+idForm).serialize();
-         
+         if(confirma){
          $.ajax({
              method:'post',
              url:destino,
@@ -29,7 +32,8 @@
              success:function (data){
                  //Aahhhhhh
                  if(data=='true'){
-                     $('#linha'+idForm).remove();
+                     //$('#linha'+idForm).remove();
+                     $('#linha'+idForm).fadeOut(1000);
                  }else {
                      alert('deu coco');
                  }
@@ -41,12 +45,20 @@
              }
             
          }); 
+        }
          return false;
+        }
+        var situacao=false;
+        function mostrarEsconderTitulo(){
+                $('#titulo').toggle(400);
         }
         </script>
         
         <a href="{{route('categoria.create')}}">Adicionar Categoria</a>
-        
+        <br>
+        <button id="btn"onclick="mostrarEsconderTitulo()">Mostrar/Esconder titulo</button>
+        <br/>
+        <h2 id="titulo" hidden>Listagem do bagulho</h2>
         <table style="width: 50%;">
             <thead>
                 <tr>

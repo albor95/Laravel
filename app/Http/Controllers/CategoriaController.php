@@ -20,7 +20,8 @@ class CategoriaController extends Controller {
         $categoria=new \App\Categoria();
         $categoria->nomcat=$request->get('nomcat');
         $categoria->save();
-        return redirect('/categoria')->with('msg','Categoria cadastrada mulekote!');
+     
+        return "true";
     }
     public function destroy($codcat){
         $categoria = \App\categoria::find($codcat);
