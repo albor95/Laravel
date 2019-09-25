@@ -34,9 +34,11 @@ function eliminarCategoria(idForm,destino){
         function mostrarEsconderTitulo(){
                 $('#titulo').toggle(400);
         }
+        
         function adicionarCategoria(destino){
             dadosForm=$('#formAdd').serialize();
             nomcat=$('#nomcat').val();
+            $('#btnSalvar').attr('disabled', 'true');            
             if(nomcat.trim()!=""){
                  $.ajax({
              method:'post',
@@ -46,30 +48,93 @@ function eliminarCategoria(idForm,destino){
              success:function (data){
                  //Aahhhhhh
                  if(data=='true'){
-                     //$('#linha'+idForm).remove();
-                       $('#p1').fadeIn(400);
-                       $('#p1').fadeOut(2000);
-                        //history.back();
-                        $('#nomcat').val('');
-                        $('#nomcat').focus();
+                     msg = 'Categoria adicionada com sucesso!'
+                    $('#status').hide();
+                    $('#status').html('<h4 class="sucesso">'+msg+'</h4>');
+                    $('#status').fadeIn(800);
+                    
+                    $('#nomcat').val('');
+                    $('#nomcat').focus();
+                    
+                    $('#btnSalvar').removeAttr('disabled', 'true');
+                 
                  }else {
-              $('#p2').fadeIn(400);
-              $('#p2').fadeOut(2000);
-              
+              msg = 'deu merda!'
+                    $('#status').hide();
+                    $('#status').html('<h4 class="erro">'+msg+'</h4>');
+                    $('#status').fadeIn(800);
+                     $('#btnSalvar').removeAttr('disabled', 'true');
                  }
                 
              },
              error: function(argument){
-                 //fdhgfdshfsdfjkdkfskdj
-                $('#p3').fadeIn(400);
-                $('#p3').fadeOut(2000);
+                msg = 'deu coco!'
+                    $('#status').hide();
+                    $('#status').html('<h4 class="erro">'+msg+'</h4>');
+                    $('#status').fadeIn(800);
+                     $('#btnSalvar').removeAttr('disabled', 'true');
              }
             
          }); 
             }else{
-                 $('#p4').fadeIn(400);
-                 $('#p4').fadeOut(2000);
+                msg = 'escreve uma coisa ai otario!'
+                    $('#status').hide();
+                    $('#status').html('<h4 class="erro">'+msg+'</h4>');
+                    $('#status').fadeIn(800);
+                     $('#btnSalvar').removeAttr('disabled', 'true');
             }
              return false;
+        }
+        
+        function EditarCategoria(destino){
+            dadosForm=$('#formAdd').serialize();
+            nomcat=$('#nomcat').val();
+            $('#btnSalvar').attr('disabled', 'true');            
+            if(nomcat.trim()!=""){
+                 $.ajax({
+             method:'post',
+             url:destino,
+             data: dadosForm,
+             dataType:'html',
+             success:function (data){
+                 //Aahhhhhh
+                 if(data=='true'){
+                     msg = 'Categoria editada com sucesso!'
+                    $('#status').hide();
+                    $('#status').html('<h4 class="sucesso">'+msg+'</h4>');
+                    $('#status').fadeIn(800);
+                    
+                    $('#nomcat').val('');
+                    $('#nomcat').focus();
+                    
+                    $('#btnSalvar').removeAttr('disabled', 'true');
+                  
+                 }else {
+              msg = 'deu merda!'
+                    $('#status').hide();
+                    $('#status').html('<h4 class="erro">'+msg+'</h4>');
+                    $('#status').fadeIn(800);
+                     $('#btnSalvar').removeAttr('disabled', 'true');
+                 }
+                
+             },
+             error: function(argument){
+                msg = 'deu coco!'
+                    $('#status').hide();
+                    $('#status').html('<h4 class="erro">'+msg+'</h4>');
+                    $('#status').fadeIn(800);
+                     $('#btnSalvar').removeAttr('disabled', 'true');
+             }
+            
+         }); 
+            }else{
+                msg = 'escreve uma coisa ai otario!'
+                    $('#status').hide();
+                    $('#status').html('<h4 class="erro">'+msg+'</h4>');
+                    $('#status').fadeIn(800);
+                     $('#btnSalvar').removeAttr('disabled', 'true');
+            }
+             return false;
+             
         }
        

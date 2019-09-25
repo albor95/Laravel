@@ -8,17 +8,25 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        
+         <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+        <script src="{{url('/')}}/js/categoria.js" type="text/javascript"></script>
+       
     </head>
     <body>
         <h3>Editando a categoria: {{$categoria->nomcat}}</h3>
-        <form action="{{route('categoria.update',$categoria->codcat)}}" method="post">
+        <form id="formAdd" onsubmit=" return EditarCategoria('{{route('categoria.update',$categoria->codcat)}}')">
             @csrf
             @method('patch')
             <label for="nomcat">Nome da categoria</label><br>
             <input type="text" name="nomcat" id="nomcat" value="{{$categoria->nomcat}}"/><br><br>
-            <button type="submit">Editar</button>
+            <button id="btnSalvar" type="submit">Editar</button>
         </form>
+        
+        <div id="status"></div>
+        
        
     </body>
 </html>

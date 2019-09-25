@@ -32,13 +32,14 @@ class CategoriaController extends Controller {
     public function edit($codcat){
         $categoria=\App\Categoria::find($codcat);
         return view('categoria.edit',compact('categoria'));
-        
+      
     }
     
      public function update(Request $request, $codcat) {
         $categoria=\App\Categoria::find($codcat);
         $categoria->nomcat=$request->get('nomcat');
         $categoria->save();
-        return redirect('/categoria')->with('atualizada','Update deu certo mulekote!');
+        //return redirect('/categoria');
+        return "true";
     }
 }

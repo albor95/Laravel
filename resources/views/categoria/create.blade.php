@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="{{url('/')}}/css/style.css"/>
           <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -19,15 +20,13 @@
         <form id="formAdd" onsubmit=" return adicionarCategoria('{{route('categoria.store')}}')" action=""  >
             @csrf
             <label for="nomcat">Nome da categoria</label><br>
-            <input type=""text name="nomcat" id="nomcat"/><br><br>
-            <button type="submit">Adicionar</button>
+            <input type="text" name="nomcat" id="nomcat"/><br><br>
+            <button id="btnSalvar" type="submit">Adicionar</button>
         </form>
        
-        <p id="p1" hidden="">Categoria adicionada com sucesso!</p>
-        <p id="p2" hidden="">deu merda</p>
-        <p id="p3" hidden="">cago o bagulho</p>
-        <p id="p4" hidden="">campo n tem porra nenhuma,otario</p>
-        
-        
+       
+        <div id="status"></div>
+   
+       
     </body>
 </html>
